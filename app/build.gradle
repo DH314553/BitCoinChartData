@@ -1,0 +1,62 @@
+
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk 33
+    ndkVersion '21.3.6528147'
+
+    defaultConfig {
+        applicationId "com.example.bitcoinchartdata"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    sourceSets {
+        debug {
+            assets {
+                srcDirs 'src/debug/assets'
+            }
+        }
+    }
+    packagingOptions {
+        exclude "META-INF/native-image/ios-x86_64/jnijavacpp/reflect-config.json"
+        exclude "META-INF/native-image/linux-x86_64/jnijavacpp/jni-config.json"
+        exclude "META-INF/native-image/windows-x86/jnijavacpp/reflect-config.json"
+        exclude "META-INF/native-image/android-x86_64/jnijavacpp/jni-config.json"
+        exclude "META-INF/native-image/android-x86/jnijavacpp/jni-config.json"
+        exclude "META-INF/native-image/ios-arm64/jnijavacpp/jni-config.json"
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.github.PhilJay:MPAndroidChart:3.1.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    implementation("org.deeplearning4j:deeplearning4j-core:1.0.0-M1.1")
+    implementation("org.nd4j:nd4j-native-platform:1.0.0-M1.1")
+    implementation("org.slf4j:slf4j-jdk14:1.7.30")
+    implementation 'androidx.core:core-ktx:1.10.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
